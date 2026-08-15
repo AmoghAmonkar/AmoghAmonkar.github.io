@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name | Portfolio</title>
+  <title>Amogh Amonkar | Process Systems Engineering</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -70,37 +70,182 @@
       gap: 1rem;
     }
 
+    /* Base Card Container */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.25rem;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-      text-decoration: none;
-      color: inherit;
-      display: block;
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
-    .card:hover {
-      transform: translateY(-2px);
+    /* Make only details cards clickable/hoverable */
+    details.card {
+      cursor: pointer;
+    }
+    
+    details.card:hover {
       border-color: var(--accent);
     }
 
-    .card h3 {
-      color: var(--heading);
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
+    /* Remove default browser marker arrow */
+    summary::-webkit-details-marker,
+    summary::marker {
+      display: none;
+      content: "";
     }
 
-    .card p {
+    /* Header layout inside the summary */
+    summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .summary-content h3 {
+      color: var(--heading);
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .summary-content p {
       font-size: 0.9rem;
       color: #8b949e;
     }
 
+    /* Rotating arrow icon */
+    .expand-icon {
+      font-size: 0.8rem;
+      color: var(--accent);
+      transition: transform 0.2s ease;
+      margin-top: 0.2rem;
+      user-select: none;
+    }
+
+    details[open] > summary .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Hidden expanded content */
+    .details-content {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* GitHub / External Link Buttons */
+    .repo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: #21262d;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .repo-btn:hover {
+      background: #30363d;
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* =========================================
+       NEW EXPERIENCE SECTION STYLES
+       ========================================= */
+
+    /* Static Company Header Layout */
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.8rem;
+    }
+
+    .company-header h3 {
+      color: var(--heading);
+      font-size: 1.1rem;
+    }
+
+    .company-duration {
+      font-size: 0.9rem;
+      color: #8b949e;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    /* Nested Clickable Role Dropdowns */
+    details.role-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    details.role-item:hover {
+      border-color: var(--accent);
+    }
+
+    .role-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .role-title {
+      color: var(--heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .role-duration {
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    /* Experience Bullet Points */
+    .experience-list {
+      margin-left: 1.2rem;
+    }
+
+    .experience-list li {
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* Links & Tags */
     .links {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #21262d;
+      color: #58a6ff;
+      border: 1px solid #30363d;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      margin-right: 0.4rem;
+      margin-top: 0.5rem;
     }
 
     a.link {
@@ -121,44 +266,237 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <header>
-      <h1>Your Name</h1>
-      <p class="tagline">Your role, focus area, or a quick 1-sentence value statement.</p>
+      <h1>Amogh Amonkar</h1>
+      <p class="tagline">Process Systems Engineering, Chemical Engineering & Optimization</p>
+      <p class="location" style="color: #8b949e; margin-top: 0.2rem; font-size: 0.9rem;">Carnegie Mellon University, Pittsburgh, PA</p>
     </header>
 
     <section>
       <h2>About</h2>
-      <p>A brief, engaging narrative about what you build, solve, or care about. Keep it conversational rather than listing bullet points like a CV.</p>
+      <p>Ph.D. Student in Chemical Engineering at CMU. Blending industrial refinery process engineering with computational optimization, ML, and mathematical modeling to solve complex process energy challenges.</p>
     </section>
 
     <section>
-      <h2>Featured Work & Highlights</h2>
+      <h2>Projects</h2>
       <div class="grid">
-        <a href="#" class="card">
-          <h3>Project or Experience Title</h3>
-          <p>A short summary of what you built or achieved, highlighting impact rather than basic job duties.</p>
-        </a>
-        <a href="#" class="card">
-          <h3>Another Key Highlight</h3>
-          <p>Another concise card giving visitors quick insight into your skills in action.</p>
-        </a>
+        
+      <!-- Project Card 1 -->
+      <details class="card">
+        <summary>
+          <div class="summary-content">
+            <h3>Process Scheduling & Performance Forecasting</h3>
+            <p>MILP & Gaussian Process ML framework for batch process scheduling and yield prediction.</p>
+
+            <div class="tag-container">
+              <span class="tag">MILP</span>
+              <span class="tag">Pyomo</span>
+              <span class="tag">Gurobi</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Machine Learning</span>
+            </div>
+
+          </div>
+          <span class="expand-icon">▼</span>
+        </summary>
+        <div class="details-content">
+          <p>Developed and implemented a scalable Nonlinear Autoregressive Exogenous Input (NARX) Gaussian Process model in PyTorch and GPyTorch for high-fidelity performance forecasting. Formulated and solved a Mixed Integer Linear Program (MILP) in Pyomo using Gurobi/CPLEX to minimize batch cycle times under zero-wait, compatibility, and equipment constraints.</p>
+        </div>
+      </details>
+
+      <!-- Project Card 2 -->
+      <details class="card">
+        <summary>
+          <div class="summary-content">
+            <h3>Generalized Pooling Problem Optimization</h3>
+            <p>Non-Linear Programming (NLP) formulation for feedstock planning across multi-feed pooling networks.</p>
+
+            <div class="tag-container">
+              <span class="tag">NLP</span>
+              <span class="tag">Pyomo</span>
+              <span class="tag">Optimization</span>
+              <span class="tag">Mathematical Modeling</span>            
+            </div>
+
+          </div>
+          <span class="expand-icon">▼</span>
+        </summary>
+        <div class="details-content">
+          <p>Formulated a Non-Linear Programming (NLP) problem for a multiple-feed, multiple-product, and fixed intermediate storage pooling network to optimize feedstock purchase planning. Executed in Pyomo and benchmarked across four different mathematical solvers to evaluate performance and convergence.</p>
+        </div>
+      </details>
+
+      <!-- Project Card 3 -->
+      <details class="card">
+        <summary>
+          <div class="summary-content">
+            <h3>Model Predictive Control for Non-Isothermal CSTR</h3>
+            <p>Dynamic simulation and Model Predictive Control implementation for temperature stabilization in continuous reactors.</p>
+
+            <div class="tag-container">
+              <span class="tag">Python</span>
+              <span class="tag">Process Control</span>
+              <span class="tag">MPC</span>         
+            </div>
+
+          </div>
+          <span class="expand-icon">▼</span>
+        </summary>
+        <div class="details-content">
+          <p>Modeled a continuous stirred-tank reactor (CSTR) with temperature dynamics in Python. Implemented an explicit Model Predictive Controller (MPC) to adjust cooling mechanisms and regulate reactor temperature during continuous operations.</p>
+        </div>
+      </details>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+      <div class="grid">
+
+        <!-- Carnegie Mellon University -->
+        <div class="card">
+          <div class="company-header">
+            <h3>Carnegie Mellon University</h3>
+            <span class="company-duration">Sep 2025 – Present</span>
+          </div>
+
+          <!-- Role 1 -->
+          <details class="role-item">
+            <summary>
+              <div class="role-header">
+                <span class="role-title">Graduate Research Assistant</span>
+                <span class="role-duration">Feb 2026 – Present</span>
+              </div>
+              <span class="expand-icon">▼</span>
+            </summary>
+            <div class="details-content">
+              <ul class="experience-list">
+                <li>Conducting research in Process Systems Engineering focused on optimization and numerical modeling.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Role 2 -->
+          <details class="role-item">
+            <summary>
+              <div class="role-header">
+                <span class="role-title">Course Assistant — Computational Fluid Dynamics</span>
+                <span class="role-duration">Sep 2025 – Dec 2025</span>
+              </div>
+              <span class="expand-icon">▼</span>
+            </summary>
+            <div class="details-content">
+              <ul class="experience-list">
+                <li>Assisted in teaching course content, grading, and guiding students through numerical CFD modeling techniques.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Company-level Tags -->
+          <div class="tag-container" style="margin-top: 0.8rem;">
+            <span class="tag">Process Systems Engineering</span>
+            <span class="tag">CFD</span>
+            <span class="tag">Academic Research</span>
+          </div>
+        </div>
+
+        <!-- HPCL-Mittal Energy Limited -->
+        <div class="card">
+          <div class="company-header">
+            <h3>HPCL-Mittal Energy Limited</h3>
+            <span class="company-duration">Nov 2021 – Jul 2024</span>
+          </div>
+
+          <!-- Role 1 -->
+          <details class="role-item">
+            <summary>
+              <div class="role-header">
+                <span class="role-title">Process Engineer — Energy Conservation Group</span>
+                <span class="role-duration">Nov 2022 – Jul 2024</span>
+              </div>
+              <span class="expand-icon">▼</span>
+            </summary>
+            <div class="details-content">
+              <ul class="experience-list">
+                <li>Simulated and evaluated existing refinery processes to implement facility-wide energy-saving initiatives.</li>
+                <li>Monitored daily refinery fuel consumption, loss metrics, steam usage, and flaring systems.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Role 2 -->
+          <details class="role-item">
+            <summary>
+              <div class="role-header">
+                <span class="role-title">Process Engineer — Yield Accounting Group</span>
+                <span class="role-duration">Nov 2021 – Jul 2024</span>
+              </div>
+              <span class="expand-icon">▼</span>
+            </summary>
+            <div class="details-content">
+              <ul class="experience-list">
+                <li>Performed daily, refinery-wide material balancing and analyzed mass balance deviations across critical streams.</li>
+                <li>Rotated in Crude Distillation Unit (CDU) operations as a Graduate Engineering Trainee.</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="tag-container" style="margin-top: 0.8rem;">
+            <span class="tag">Refinery Operations</span>
+            <span class="tag">Energy Conservation</span>
+            <span class="tag">Material Balancing</span>
+            <span class="tag">VBA Excel</span>
+          </div>
+        </div>
+
+        <!-- National Chemical Laboratory -->
+        <div class="card">
+          <div class="company-header">
+            <h3>National Chemical Laboratory</h3>
+            <span class="company-duration">Jan 2021 – Jun 2021</span>
+          </div>
+
+          <details class="role-item">
+            <summary>
+              <div class="role-header">
+                <span class="role-title">Research Intern</span>
+                <span class="role-duration">Jan 2021 – Jun 2021</span>
+              </div>
+              <span class="expand-icon">▼</span>
+            </summary>
+            <div class="details-content">
+              <ul class="experience-list">
+                <li>Executed research modeling scripts and computational simulations using MATLAB and Python.</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="tag-container" style="margin-top: 0.8rem;">
+            <span class="tag">Python</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Computational Modeling</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section>
       <h2>Connect</h2>
       <div class="links">
-        <a href="YOUR_LINKEDIN_URL" class="link" target="_blank">LinkedIn</a>
-        <a href="YOUR_GITHUB_URL" class="link" target="_blank">GitHub</a>
-        <a href="mailto:your.email@example.com" class="link">Email</a>
+        <a href="https://www.linkedin.com/in/amogh-amonkar/" class="link" target="_blank">LinkedIn</a>
+        <a href="https://github.com/AmoghAmonkar" class="link" target="_blank">GitHub</a>
+        <a href="mailto:aaamonka@andrew.cmu.edu" class="link">Email</a>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Your Name • Hosted on GitHub Pages</p>
+      <p>© 2026 Amogh Amonkar • Hosted on GitHub Pages</p>
     </footer>
   </div>
 
