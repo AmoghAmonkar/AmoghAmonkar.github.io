@@ -248,6 +248,29 @@
       margin-top: 0.5rem;
     }
 
+    /* Make tags look clickable */
+    .tag {
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tag:hover {
+      background-color: var(--accent);
+      color: #0d1117;
+      border-color: var(--accent);
+    }
+
+    /* Tag Active State */
+    .tag.active {
+      background-color: var(--accent);
+      color: #0d1117;
+    }
+
+    /* Hidden class for filtered elements */
+    .hide-item {
+      display: none !important;
+    }
+
     a.link {
       color: var(--accent);
       text-decoration: none;
@@ -280,6 +303,15 @@
       <h2>About</h2>
       <p>Ph.D. Student in Chemical Engineering at CMU. Blending industrial refinery process engineering with computational optimization, ML, and mathematical modeling to solve complex process energy challenges.</p>
     </section>
+
+    <!-- Filter Banner (Hidden by default) -->
+    <div id="filter-banner" style="display: none; margin-bottom: 1.5rem; background: #21262d; padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid var(--border); justify-content: space-between; align-items: center;">
+      <span style="font-size: 0.9rem;">Filtering by skill: 
+        <strong id="active-skill-name" style="color: var(--accent);">
+        </strong>
+      </span>
+      <button onclick="resetFilter()" style="background: transparent; border: none; color: #8b949e; cursor: pointer; font-size: 0.85rem; text-decoration: underline;">Show All</button>
+    </div>
 
     <section>
       <h2>Projects</h2>
@@ -499,6 +531,58 @@
       <p>© 2026 Amogh Amonkar • Hosted on GitHub Pages</p>
     </footer>
   </div>
+
+<script>
+  // Add click listeners to all skill tags
+  document.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', (event) => {
+      // Prevent clicking the tag from opening/closing the details card
+      event.stopPropagation();
+      event.preventDefault();
+
+      const selectedSkill = tag.textContent.trim();
+      filterBySkill(selectedSkill);
+    });
+  });
+
+  function filterBySkill(skillName) {
+    // Show the active filter banner
+    const banner = document.getElementById('filter-banner');
+    const skillText = document.getElementById('active-skill-name');
+    banner.style.display = 'flex';
+    skillText.textContent = skillName;
+
+    // Filter cards and role items
+    const allItems = document.querySelectorAll('.card, .role-item');
+
+    allItems.forEach(item => {
+      const tagsInside = Array.from(item.querySelectorAll('.tag')).map(t => t.textContent.trim());
+      
+      if (tagsInside.includes(skillName)) {
+        item.classList.remove('hide-item');
+        // Automatically expand details if it's a card/role matching the skill
+        if (item.tagName.toLowerCase() === 'details') {
+          item.open = true;
+        }
+      } else {
+        item.classList.add('hide-item');
+      }
+    });
+  }
+
+  function resetFilter() {
+    // Hide filter banner
+    document.getElementById('filter-banner').style.display = 'none';
+
+    // Show all cards and role items again
+    document.querySelectorAll('.card, .role-item').forEach(item => {
+      item.classList.remove('hide-item');
+      if (item.tagName.toLowerCase() === 'details') {
+        item.open = false; // reset open state
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
