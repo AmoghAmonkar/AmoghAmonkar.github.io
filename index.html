@@ -271,6 +271,34 @@
       display: none !important;
     }
 
+    /* Skills Section Styling */
+    .skills-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .skill-category h3 {
+      font-size: 0.95rem;
+      color: var(--heading);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-pill {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+    }
+
     a.link {
       color: var(--accent);
       text-decoration: none;
@@ -302,6 +330,50 @@
     <section>
       <h2>About</h2>
       <p>Ph.D. Student in Chemical Engineering at CMU. Blending industrial refinery process engineering with computational optimization, ML, and mathematical modeling to solve complex process energy challenges.</p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+
+        <!-- Category 1 -->
+        <div class="skill-category">
+          <h3>Process Systems Engineering, Optimization & Mathematical Modeling</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">Pyomo</span>
+            <span class="skill-pill">Gurobi</span>
+            <span class="skill-pill">CPLEX</span>
+            <span class="skill-pill">Mixed-Integer Linear Programming (MILP)</span>
+            <span class="skill-pill">Nonlinear Programming (NLP)</span>
+            <span class="skill-pill">Model Predictive Control (MPC)</span>
+            <span class="skill-pill">Process Scheduling</span>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="skill-category">
+          <h3>Programming, Machine Learning & Computing</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">GPyTorch</span>
+            <span class="skill-pill">MATLAB</span>
+            <span class="skill-pill">Gaussian Processes</span>
+            <span class="skill-pill">VBA Excel</span>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="skill-category">
+          <h3>Process  Engineering</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">Energy Conservation</span>
+            <span class="skill-pill">Refinery Yield Accounting</span>
+            <span class="skill-pill">Material Balancing</span>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- Filter Banner (Hidden by default) -->
